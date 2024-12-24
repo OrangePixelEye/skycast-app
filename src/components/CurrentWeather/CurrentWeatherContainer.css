@@ -1,0 +1,20 @@
+.parent {
+    display: flex;
+    align-items: center; /* Ensures content is vertically aligned */
+    height: 100%; /* Adjust to the desired height of the parent */
+  }
+  
+  .content {
+    flex: 1; /* Takes up the remaining space on the left */
+    padding: 10px; /* Optional: Adds some space around the content */
+    text-align: left;
+  }
+  
+  .square-image {
+    height: 12vh; /* Matches the height of the parent */
+    width: auto; /* Adjusts the width proportionally to maintain the aspect ratio */
+    aspect-ratio: 1 / 1;
+    object-fit: cover; /* Ensures the image covers the square */
+    object-position: right; /* Aligns the image to the right */
+  }
+  
