@@ -1,15 +1,16 @@
+import { City } from "../types/City";
 import { storageService } from "./StorageService";
 
 export class CityService {
-    constructor(){
-
-    }
-    
-    getCities() {
+    getCities(): Promise<Array<City>> {
         return storageService.getItem("cities");
     }
 
-    appendCity(city: string) {
-        return storageService.setItem("cities", city);
+    async appendCity(cityName: string) {
+        const cities = await this.getCities();
+        cities.push({
+            name: cityName
+        });
+        return storageService.setItem("cities", cities);
     }
 }
