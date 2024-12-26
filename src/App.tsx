@@ -33,6 +33,8 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { StartupPage } from './pages/Startup/Startup';
+import { StartupGuard } from './guards/StartupGuard';
 
 setupIonicReact();
 
@@ -44,7 +46,10 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}>
-              <Redirect to="/folder/Inbox" />
+              <StartupGuard />
+            </Route>
+            <Route path="/startup" exact={true}>
+              <StartupPage />
             </Route>
             <Route path="/folder/:name" exact={true}>
               <Page />
