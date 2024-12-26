@@ -51,7 +51,7 @@ const App: React.FC = () => {
             <Route path="/startup" exact={true}>
               <StartupPage />
             </Route>
-            <Route path="/folder/:name" exact={true}>
+            <Route path="/city/:name" exact={true}>
               <Page />
             </Route>
           </IonRouterOutlet>

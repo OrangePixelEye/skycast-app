@@ -3,21 +3,30 @@ import { Redirect, Route } from "react-router";
 import { CityService } from "../services/CityService";
 
 export function StartupGuard() {
-    const [areCitiesAvailable, setAreCitiesAvailable] = useState<null| boolean>(null);
+    const [areCitiesAvailable, setAreCitiesAvailable] = 
+        useState<null| boolean>(null);
+    const [currentCity, setCurrentCity] = useState("");
+    
     const cityService = new CityService();
+    
     useEffect(()=> {
         const verifyCities = async() => {
-            // TODO: implement a better managment
             const cities = await cityService.getCities(); 
-            setAreCitiesAvailable(cities != null)
+            
+            if(cities == null) return;
+            
+            setAreCitiesAvailable(true);
+            setCurrentCity(cities[0].name);
         }
         verifyCities();
     }, []) ;
+    
     if(areCitiesAvailable == null){
         return <div>Loading...</div>
     }
+    
     return areCitiesAvailable ? (
-        <Route path='/folder/index'/>
+        <Route path={'/city/' + currentCity}/>
     ) : (
         <Redirect to='/startup' />
     )

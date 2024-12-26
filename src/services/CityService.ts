@@ -6,11 +6,13 @@ export class CityService {
         return storageService.getItem("cities");
     }
 
-    async appendCity(cityName: string) {
+    async appendCity(data: {
+        name: string,
+        country: string,
+        state: string
+    }) {
         const cities = await this.getCities();
-        cities.push({
-            name: cityName
-        });
+        cities.push(data);
         return storageService.setItem("cities", cities);
     }
 }
