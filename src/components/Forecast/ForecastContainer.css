@@ -1,0 +1,10 @@
+.forecast {
+    flex-direction: row;
+    display: flex;
+    overflow-x: auto;
+}
+
+section {
+    margin-left: 2vw;
+    flex: 200vh;
+}
