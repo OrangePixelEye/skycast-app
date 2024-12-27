@@ -13,7 +13,6 @@ import './Menu.css';
 
 const Menu: React.FC = () => {
   //const location = useLocation();
-
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
