@@ -12,11 +12,11 @@ export function StartupGuard() {
     useEffect(()=> {
         const verifyCities = async() => {
             const cities = await cityService.getCities(); 
+            if(cities != null) {
+                setCurrentCity(cities[0].name);
+            }
+            setAreCitiesAvailable(cities != null);
             
-            if(cities == null) return;
-            
-            setAreCitiesAvailable(true);
-            setCurrentCity(cities[0].name);
         }
         verifyCities();
     }, []) ;
