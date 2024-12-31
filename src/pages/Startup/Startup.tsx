@@ -9,11 +9,15 @@ export function StartupPage(){
     const router = useIonRouter();
     const cityService = new CityService();
 
-    const addCity = async () => {
-        const results = await cityService.searchCities(cityName)
-        setCityResults(results)
+    const searchCity = async () => {
+        const results = await cityService.searchCities(cityName) as any
+        const temp = results.data;
+        setCityResults(temp)
         //await cityService.appendCity(cityName);
         //router.push('/folder/Index')
+    }
+
+    const addCity = () => {
     }
 
     return (
@@ -24,7 +28,11 @@ export function StartupPage(){
                 </IonTitle>
             </IonHeader>
             <IonContent>
-                <IonInput onInput={(e) => setCityName(e.target.value)} value={cityName} label="City" labelPlacement="floating" placeholder="Your city name"/>
+                
+                <IonInput onInput={(e) => setCityName(e.target.value)} value={cityName} label="City" 
+                          labelPlacement="floating" placeholder="Your city name">
+                <IonButton slot="end" onClick={searchCity}> Search </IonButton>
+                </IonInput>
                 <IonList>
                    {cityResults.map((result, idx) => {
                     return(
