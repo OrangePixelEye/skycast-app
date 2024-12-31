@@ -40,6 +40,7 @@ export function StartupPage() {
 
   const selectCity = (idx: number) => {
     setSelectedIdx(idx);
+      console.log(idx)
   };
 
   return (
@@ -66,9 +67,7 @@ export function StartupPage() {
               <IonItem
                 key={idx}
                 onClick={() => selectCity(idx)}
-                style={{
-                  backgroundColor: idx == selectedIdx ? "white" : "black",
-                }}
+                className={idx === selectedIdx ? "selected" : "not-selected"} 
               >
                 {result.city}
               </IonItem>
