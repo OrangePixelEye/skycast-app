@@ -40,7 +40,6 @@ export function StartupPage() {
 
   const selectCity = (idx: number) => {
     setSelectedIdx(idx);
-      console.log(idx)
   };
 
   return (
