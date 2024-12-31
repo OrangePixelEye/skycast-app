@@ -18,7 +18,9 @@ export class CityService {
     async appendCity(data: {
         name: string,
         country: string,
-        state: string
+        state: string,
+        lat: number,
+        lon: number
     }) {
         const cities = await this.getCities();
         cities.push(data);
@@ -28,7 +30,7 @@ export class CityService {
     async searchCities(keyword: string): Promise<Array<CitySearchResponse>> {
         try{
             const response = await axios.get(`${this.API_URL}/geolocation?city=${keyword}`);
-            return response as Array<CitySearchResponse>;
+            return response as unknown as Array<CitySearchResponse>;
         } catch(e) {
             return  []
         }
