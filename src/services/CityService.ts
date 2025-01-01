@@ -11,14 +11,15 @@ export class CityService {
             throw new Error("API URL not found!");
         }
     }
-    getCities(): Promise<Array<City>> {
-        return storageService.getItem("cities");
+    async getCities(): Promise<Array<City>> {
+        const cities = await storageService.getItem("cities");
+        return cities == null ? [] : cities;    
     }
 
     async appendCity(data: {
         name: string,
         country: string,
-        state: string,
+        state?: string,
         lat: number,
         lon: number
     }) {

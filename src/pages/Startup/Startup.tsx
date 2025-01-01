@@ -26,16 +26,16 @@ export function StartupPage() {
     const temp = results.data;
     setCityResults(temp);
     setSelectedIdx(-1);
-    };
+  };
 
   const addCity = async () => {
     const selectedCity = cityResults[selectedIdx];
-    const { city, ...cityData } = selectedCity;
+    const { local_names, ...selectedCityFormatted } = selectedCity;
     await cityService.appendCity({
-      name: city,
-      ...cityData,
+      ...selectedCityFormatted,
     });
-    router.push(`/city/${city}`);
+
+    router.push(`/city/${selectedCityFormatted.name}`);
   };
 
   const selectCity = (idx: number) => {
@@ -66,9 +66,9 @@ export function StartupPage() {
               <IonItem
                 key={idx}
                 onClick={() => selectCity(idx)}
-                className={idx === selectedIdx ? "selected" : "not-selected"} 
+                className={idx === selectedIdx ? "selected" : "not-selected"}
               >
-                {result.city}
+                {result.name}  - {result.state} - {result.country}
               </IonItem>
             );
           })}

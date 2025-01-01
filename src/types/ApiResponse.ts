@@ -1,7 +1,8 @@
 export interface CitySearchResponse {
-    city: string;
-    state: string;
+    name: string;
+    state?: string;
     country: string;
+    local_names: object;
     lat: number;
     lon: number;
 }

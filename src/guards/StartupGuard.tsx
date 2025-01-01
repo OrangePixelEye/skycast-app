@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Redirect, Route } from "react-router";
+import { Redirect } from "react-router";
 import { CityService } from "../services/CityService";
 
 export function StartupGuard() {
@@ -26,7 +26,7 @@ export function StartupGuard() {
     }
     
     return areCitiesAvailable ? (
-        <Route path={'/city/' + currentCity}/>
+        <Redirect to={'/city/' + currentCity}/>
     ) : (
         <Redirect to='/startup' />
     )
